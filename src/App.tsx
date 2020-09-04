@@ -19,7 +19,7 @@ const categories: Category[] = [
   { name: "Very Big TEXT TEXT" },
 ];
 
-function App() {
+const App: React.FC = () => {
   function setCategory(category: Category): void {
     console.log(category.name);
   }
@@ -28,6 +28,6 @@ function App() {
       <Pagination items={categories} onChange={setCategory} />
     </div>
   );
-}
+};
 
 export default App;

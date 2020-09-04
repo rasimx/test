@@ -123,6 +123,7 @@ type PaginationProps = {
 
 const Pagination: React.FC<PaginationProps> = observer(
   ({ items, onChange }) => {
+    console.log(items);
     const objItems = items.map((item, i) => ({ instance: item, index: i }));
     const btnsRef = useRef(new Array(items.length));
     const wrapRef = useRef<HTMLDivElement | null>(null);
