@@ -130,6 +130,7 @@ const Pagination: React.FC<PaginationProps> = observer(
     const wrapRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+      console.log(showingItems);
       paginationStore.setBtns(
         btnsRef.current.map((btn, i) => {
           console.log(btn);
