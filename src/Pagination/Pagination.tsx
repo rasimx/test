@@ -59,12 +59,12 @@ class PaginationStore {
       let hiddenBtnIndex: number | null = null;
       if (direction) {
         hiddenBtnIndex = hideLast();
-        if (hiddenBtnIndex === null) {
+        if (hiddenBtnIndex == null) {
           hiddenBtnIndex = hideFirst();
         }
       } else {
         hiddenBtnIndex = hideFirst();
-        if (hiddenBtnIndex === null) {
+        if (hiddenBtnIndex == null) {
           hiddenBtnIndex = hideLast();
         }
       }
@@ -86,7 +86,7 @@ class PaginationStore {
   }
 
   @action setWindow() {
-    if (typeof window === "object") {
+    if (typeof window == "object") {
       this.setWrapElWidth();
       // todo: make debounce function
       window.addEventListener("resize", this.setWrapElWidth);
@@ -174,7 +174,7 @@ const Pagination: React.FC<PaginationProps> = observer(
         <div className="pagination__middle" ref={wrapRef}>
           {showingItems.map((item) => {
             let className = "pagination__btn";
-            if (item.index === paginationStore.currentIndex)
+            if (item.index == paginationStore.currentIndex)
               className += " active";
             return (
               // eslint-disable-next-line react/jsx-key
