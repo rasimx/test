@@ -17,7 +17,8 @@ class PaginationStore {
   @action setAvailableBtns(direction = true): void {
     const btns = [...this.btns];
     const hiddenBtns: number[] = [];
-    let availableBtns = btns.filter((btn) => {
+    if (!btns.length) return;
+    let availableBtns: storeBtn[] = btns.filter((btn) => {
       return hiddenBtns.indexOf(btn.index) == -1;
     });
 
