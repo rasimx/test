@@ -17,7 +17,6 @@ class PaginationStore {
   @action setAvailableBtns(direction = true): void {
     const btns = [...this.btns];
     const hiddenBtns: number[] = [];
-    if (btns.length == 0) return;
     let availableBtns: storeBtn[] = btns.filter((btn) => {
       return hiddenBtns.indexOf(btn.index) == -1;
     });
@@ -97,7 +96,9 @@ class PaginationStore {
   @action setWrapElWidth = () => {
     if (this.wrapEl) {
       this.wrapElWidth = this.wrapEl.clientWidth;
-      this.setAvailableBtns();
+      if (this.btns[0]) {
+        this.setAvailableBtns();
+      }
     }
   };
 
@@ -154,16 +155,19 @@ const Pagination: React.FC<PaginationProps> = observer(
       const item = objItems.filter((item) => item.index == nextIndex)[0];
       onChange(item);
     }
+
     function next(): void {
       const nextIndex = paginationStore.goto(paginationStore.currentIndex + 1);
       const item = objItems.filter((item) => item.index == nextIndex)[0];
       onChange(item);
     }
+
     function change(index: number): void {
       paginationStore.goto(index);
       const item = objItems.filter((item) => item.index == index)[0];
       onChange(item);
     }
+
     return (
       <div className="pagination">
         <button
