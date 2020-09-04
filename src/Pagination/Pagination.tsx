@@ -18,7 +18,7 @@ class PaginationStore {
     const btns = [...this.btns];
     const hiddenBtns: number[] = [];
     let availableBtns: storeBtn[] = btns.filter((btn) => {
-      return hiddenBtns.indexOf(btn.index) == -1;
+      return hiddenBtns.indexOf(btn.index) === -1;
     });
 
     const hideLast = (): number | null => {
@@ -70,7 +70,7 @@ class PaginationStore {
       }
       if (hiddenBtnIndex != null) hiddenBtns.push(hiddenBtnIndex);
       availableBtns = btns.filter((btn) => {
-        return hiddenBtns.indexOf(btn.index) == -1;
+        return hiddenBtns.indexOf(btn.index) === -1;
       });
     }
 
@@ -96,6 +96,8 @@ class PaginationStore {
   @action setWrapElWidth = () => {
     if (this.wrapEl) {
       this.wrapElWidth = this.wrapEl.clientWidth;
+
+      console.log(this.btns);
       if (this.btns[0]) {
         this.setAvailableBtns();
       }
@@ -107,7 +109,7 @@ class PaginationStore {
     if (index < 0) index = this.btns.length - 1;
     const direction: boolean = index > this.currentIndex;
     this.currentIndex = index;
-    if (this.availableBtns.indexOf(index) == -1) {
+    if (this.availableBtns.indexOf(index) === -1) {
       this.setAvailableBtns(direction);
     }
     return index;
@@ -123,7 +125,6 @@ type PaginationProps = {
 
 const Pagination: React.FC<PaginationProps> = observer(
   ({ items, onChange }) => {
-    console.log(items);
     const objItems = items.map((item, i) => ({ instance: item, index: i }));
     const btnsRef = useRef(new Array(items.length));
     const wrapRef = useRef<HTMLDivElement | null>(null);
@@ -153,19 +154,19 @@ const Pagination: React.FC<PaginationProps> = observer(
 
     function prev(): void {
       const nextIndex = paginationStore.goto(paginationStore.currentIndex - 1);
-      const item = objItems.filter((item) => item.index == nextIndex)[0];
+      const item = objItems.filter((item) => item.index === nextIndex)[0];
       onChange(item);
     }
 
     function next(): void {
       const nextIndex = paginationStore.goto(paginationStore.currentIndex + 1);
-      const item = objItems.filter((item) => item.index == nextIndex)[0];
+      const item = objItems.filter((item) => item.index === nextIndex)[0];
       onChange(item);
     }
 
     function change(index: number): void {
       paginationStore.goto(index);
-      const item = objItems.filter((item) => item.index == index)[0];
+      const item = objItems.filter((item) => item.index === index)[0];
       onChange(item);
     }
 
@@ -180,7 +181,7 @@ const Pagination: React.FC<PaginationProps> = observer(
         <div className="pagination__middle" ref={wrapRef}>
           {showingItems.map((item) => {
             let className = "pagination__btn";
-            if (item.index == paginationStore.currentIndex)
+            if (item.index === paginationStore.currentIndex)
               className += " active";
             return (
               // eslint-disable-next-line react/jsx-key
