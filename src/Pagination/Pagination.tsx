@@ -96,11 +96,7 @@ class PaginationStore {
   @action setWrapElWidth = () => {
     if (this.wrapEl) {
       this.wrapElWidth = this.wrapEl.clientWidth;
-
-      console.log(this.btns);
-      if (this.btns[0]) {
-        this.setAvailableBtns();
-      }
+      this.setAvailableBtns();
     }
   };
 
@@ -189,7 +185,6 @@ const Pagination: React.FC<PaginationProps> = observer(
                 className={className}
                 key={item.index}
                 ref={(ref) => {
-                  console.log(ref);
                   btnsRef.current[item.index] = ref;
                 }}
                 onClick={change.bind(null, item.index)}
