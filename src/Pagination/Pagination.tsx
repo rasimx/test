@@ -183,6 +183,7 @@ const Pagination: React.FC<PaginationProps> = observer(
         </button>
         <div className="pagination__middle" ref={wrapRef}>
           {showingItems.map((item) => {
+            console.log(showingItems);
             let className = "pagination__btn";
             if (item.index === paginationStore.currentIndex)
               className += " active";
