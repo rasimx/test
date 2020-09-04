@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 import { observer } from "mobx-react";
 import { Category } from "../App";
 
