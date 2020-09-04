@@ -192,6 +192,7 @@ const Pagination: React.FC<PaginationProps> = observer(
                 className={className}
                 key={item.index}
                 ref={(ref) => {
+                  console.log(ref);
                   btnsRef.current[item.index] = ref;
                 }}
                 onClick={change.bind(null, item.index)}
