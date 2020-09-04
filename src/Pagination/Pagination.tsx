@@ -130,10 +130,8 @@ const Pagination: React.FC<PaginationProps> = observer(
     const wrapRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-      console.log(showingItems);
       paginationStore.setBtns(
         btnsRef.current.map((btn, i) => {
-          console.log(btn);
           return {
             index: i,
             width:
@@ -147,7 +145,7 @@ const Pagination: React.FC<PaginationProps> = observer(
 
       paginationStore.setWrapEl(wrapRef.current);
       paginationStore.setWindow();
-    }, [items]);
+    }, []);
 
     const showingItems = paginationStore.availableBtns.length
       ? objItems.filter(
@@ -183,12 +181,10 @@ const Pagination: React.FC<PaginationProps> = observer(
         </button>
         <div className="pagination__middle" ref={wrapRef}>
           {showingItems.map((item) => {
-            console.log(showingItems);
             let className = "pagination__btn";
             if (item.index === paginationStore.currentIndex)
               className += " active";
             return (
-              // eslint-disable-next-line react/jsx-key
               <button
                 className={className}
                 key={item.index}
