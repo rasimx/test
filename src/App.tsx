@@ -21,6 +21,7 @@ const categories: Category[] = [
 
 const App: React.FC = () => {
   function setCategory(category: Category): void {
+    debugger;
     console.log(category.name);
   }
   return (

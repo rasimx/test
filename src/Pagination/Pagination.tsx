@@ -152,19 +152,19 @@ const Pagination: React.FC<PaginationProps> = observer(
     function prev(): void {
       const nextIndex = paginationStore.goto(paginationStore.currentIndex - 1);
       const item = objItems.filter((item) => item.index === nextIndex)[0];
-      onChange(item);
+      onChange(item.instance);
     }
 
     function next(): void {
       const nextIndex = paginationStore.goto(paginationStore.currentIndex + 1);
       const item = objItems.filter((item) => item.index === nextIndex)[0];
-      onChange(item);
+      onChange(item.instance);
     }
 
     function change(index: number): void {
       paginationStore.goto(index);
       const item = objItems.filter((item) => item.index === index)[0];
-      onChange(item);
+      onChange(item.instance);
     }
 
     return (
