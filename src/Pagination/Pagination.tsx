@@ -144,7 +144,7 @@ const Pagination: React.FC<PaginationProps> = observer(
       );
       paginationStore.setWrapEl(wrapRef.current);
       paginationStore.setWindow();
-    }, []);
+    }, [btnsRef]);
 
     const showingItems = paginationStore.availableBtns.length
       ? objItems.filter(
