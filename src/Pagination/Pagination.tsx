@@ -132,6 +132,7 @@ const Pagination: React.FC<PaginationProps> = observer(
     useEffect(() => {
       paginationStore.setBtns(
         btnsRef.current.map((btn, i) => {
+          console.log(btn);
           return {
             index: i,
             width:
