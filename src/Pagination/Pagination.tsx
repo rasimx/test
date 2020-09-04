@@ -142,9 +142,10 @@ const Pagination: React.FC<PaginationProps> = observer(
           };
         })
       );
+
       paginationStore.setWrapEl(wrapRef.current);
       paginationStore.setWindow();
-    }, [btnsRef]);
+    }, [items]);
 
     const showingItems = paginationStore.availableBtns.length
       ? objItems.filter(
@@ -188,7 +189,9 @@ const Pagination: React.FC<PaginationProps> = observer(
               <button
                 className={className}
                 key={item.index}
-                ref={(ref) => (btnsRef.current[item.index] = ref)}
+                ref={(ref) => {
+                  btnsRef.current[item.index] = ref;
+                }}
                 onClick={change.bind(null, item.index)}
               >
                 {item.instance.name}
